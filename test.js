@@ -52,6 +52,12 @@ git log --graph  --> แสดงเป็น Branch
 
 git commit -m "Step add file to project"
 
+ถ้ามีการแก้ไข file test.js 
+git status --> จะมีการแสดง M (Modified)
+ถ้าต้องการเก็บ Local Repository ต้องทำตาม คำสั่ง ด้านล่าง
+git add .
+git commit -m "step2"
+
 
 
 */
