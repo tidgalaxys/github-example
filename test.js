@@ -65,6 +65,8 @@ git log --oneline
 git diff <commit_id>   เปรียบเทียบ version id กับ version id ล่าสุด
 git diff <commit_id> <commit_id> เปรียบเทียบสอง Version โดยระบุ version id 2 ตัว
 
+usage:
+git diff b73bc87 
 
 
 */
