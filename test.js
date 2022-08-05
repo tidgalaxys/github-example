@@ -58,6 +58,9 @@ git status --> จะมีการแสดง M (Modified)
 git add .
 git commit -m "step2"
 
+git log --oneline
+จะแสดง version commit id ตั้งแต่ล่าสด จนถึง เริ่มต้น
+
 
 
 */
