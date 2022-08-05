@@ -68,5 +68,8 @@ git diff <commit_id> <commit_id> เปรียบเทียบสอง Vers
 usage:
 git diff b73bc87 
 
+ยกเลิกการแก้ไขไฟล์ (Check-Out)
+git checkout <file-name>
+
 
 */
