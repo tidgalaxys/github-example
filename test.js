@@ -61,6 +61,10 @@ git commit -m "step2"
 git log --oneline
 จะแสดง version commit id ตั้งแต่ล่าสด จนถึง เริ่มต้น
 
+เปรียบเทียบ Version (diff)
+git diff <commit_id>   เปรียบเทียบ version id กับ version id ล่าสุด
+git diff <commit_id> <commit_id> เปรียบเทียบสอง Version โดยระบุ version id 2 ตัว
+
 
 
 */
