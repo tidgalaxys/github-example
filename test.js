@@ -50,6 +50,7 @@ git log --oneline  --> แสดงแต่่ละ log บรรทัดเ�
 git log --graph  --> แสดงเป็น Branch
 
 
+git commit -m "Step add file to project"
 
 
 
