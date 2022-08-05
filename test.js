@@ -75,13 +75,22 @@ usage:
 git checkout test2.js  เกิดมือลั่น แล้วต้องการกู้ไฟล์คืน แต่ยังไม่ได้ git add . and git commit -m 'xxx'
 
 
-git reset
+git reset (1.สำหรับย้อนคืน จาก Tracked stage area --> Untracked)
+git reset <file-name>
 usage:
 touch a.js
 touch b.js 
 git add .  เอา a.js and b.js in tracked stage area
 ถ้าไม่ต้องการเอา  b.js ออกจาก tracked stage area ให้ใช้คำสั่ง Reset
 git reset b.js เอาไฟล์ b.js ออกจาก Tracked มาอยู่ สถานะ Untracked 
+
+git show HEAD แสดง pointer commit id ล่าสุด และแสดงว่าใครเป็นคน Update ล่าสุด
+
+git reset (2.สำหรับย้อนคืน Version)
+usage:
+--hard  ไฟล์ version ใหม่ ๆ จะถูกลบ จะเหลือ Version ที่คุณเลือก และ ตัวที่เก่ากว่า จะเหลืออยู่
+git reset --hard ee988a3
+
 
 
 */
