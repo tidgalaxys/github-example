@@ -71,5 +71,7 @@ git diff b73bc87
 ยกเลิกการแก้ไขไฟล์ (Check-Out)
 git checkout <file-name>
 
+usage:
+git checkout test2.js  เกิดมือลั่น แล้วต้องการกู้ไฟล์คืน แต่ยังไม่ได้ git add . and git commit -m 'xxx'
 
 */
