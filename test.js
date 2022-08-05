@@ -74,4 +74,14 @@ git checkout <file-name>
 usage:
 git checkout test2.js  เกิดมือลั่น แล้วต้องการกู้ไฟล์คืน แต่ยังไม่ได้ git add . and git commit -m 'xxx'
 
+
+git reset
+usage:
+touch a.js
+touch b.js 
+git add .  เอา a.js and b.js in tracked stage area
+ถ้าไม่ต้องการเอา  b.js ออกจาก tracked stage area ให้ใช้คำสั่ง Reset
+git reset b.js เอาไฟล์ b.js ออกจาก Tracked มาอยู่ สถานะ Untracked 
+
+
 */
