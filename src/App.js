@@ -4,6 +4,7 @@ import { useState } from 'react'
 import {BrowserRouter as Router,Route ,Switch} from "react-router-dom"
 import Login from "./route_components/Login"
 import Dashboard from "./route_components/Dashboard"
+import Dashboard_Exam from "./route_components/Dashboard_Exam"
 import Patientlists from "./route_components/Patientlists"
 import Manageuser from "./route_components/Manageuser"
 import Questionaire from "./route_components/Questionaire"
@@ -22,7 +23,8 @@ import {AuthContextProvider} from './route_components/AuthContext'
 import PrivateRoute from './route_components/PrivateRoute'
 
 
-
+// react-data-table-component
+// https://react-data-table-component.netlify.app/?path=/docs/api-columns--page
 
 const App = () => {
   const [statuslogin,setstatuslogin] = useState('login');
@@ -47,6 +49,9 @@ const App = () => {
 
           <PrivateRoute path="/Dashboard">
             <Dashboard />
+          </PrivateRoute>
+          <PrivateRoute path="/Dashboard_Exam">
+            <Dashboard_Exam />
           </PrivateRoute>
 
           <PrivateRoute path="/Patientlists">

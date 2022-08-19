@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = ({statuslogin}) => {
 
     return (
+      
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
             <div className="container-fluid">           
             <NavLink to="#" className="navbar-brand">ARVIC</NavLink>
@@ -29,6 +30,9 @@ const Navbar = ({statuslogin}) => {
                     <li className="nav-item">
                         <NavLink to="/Questionaire" className="nav-link">Questionaire</NavLink>                   
                     </li>
+                    <li className="nav-item">
+                        <NavLink to="/Dashboard_Exam" className="nav-link">Dashboard_Exam</NavLink>                   
+                    </li>
 
                 </ul>
                 <ul className="navbar-nav ms-auto">
@@ -45,6 +49,8 @@ const Navbar = ({statuslogin}) => {
         </div>    
     
     </nav>
+
+    
 )
    
 }
