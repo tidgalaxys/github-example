@@ -2,6 +2,8 @@ import React, {useState,useEffect} from 'react';
 import DataTable,  { createTheme  } from 'react-data-table-component';
 import {Redirect} from 'react-router-dom';
 import {CSVLink} from "react-csv";
+import { useHistory } from "react-router-dom";
+
 
 
 
@@ -108,7 +110,8 @@ const Dashboard = () => {
     const [data,setdata] = useState([]);
     const [searchcolumns,setsearchcolumns] = useState(["id","title","year"]);
   
-     
+    const history = useHistory();
+
     useEffect(() => {
        setdata(data2);
        
@@ -184,10 +187,13 @@ const Dashboard = () => {
     
 
     const clickHandler = (e) => {
+        e.preventDefault();
     
         ////const fieldName = e.target.getAttribute('id');
         console.log(e.target.id);
         console.log(e.target.title);
+        history.push('/FrmMainGraph');
+
         ////console.log(fieldName);
      
           

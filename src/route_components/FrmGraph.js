@@ -5,8 +5,13 @@ import { ComposedChart,Bar } from "recharts";
 import { useRef,forwardRef } from "react";
 import ReactToPrint from "react-to-print";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import './mycss.css'  
 
+
+// https://www.npmjs.com/package/react-datepicker
 
 const data = [
   {
@@ -211,6 +216,8 @@ const MyLineChart = forwardRef(({data}, ref) => {
 
 const FrmGraph = ({lcpara,fn_callbackme}) => {
 
+  const [startDate, setStartDate] = useState(new Date());
+
   const componentRef = useRef(); 
   
 
@@ -288,18 +295,13 @@ return(
 
 
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-12" style={{ width: "99%" }}>
     <div class="card">
       <div class="card-body">             
            <div class="text-center">
-              <button  type="button" class="btn btn-primary text-white mx-1" onClick={(e) => fn_showgraph(e)}>กราฟ</button>
-              <button  type="button" class="btn btn-primary text-whitem mx-1" onClick={(e) => fn_showgraphlab(e)}>กราฟและผลแล็บ</button>              
-              <button  type="button" class="btn btn-primary text-white mx-1" onClick={(e) => fn_showlab(e)}>ผลแล็บ</button>              
-              <ReactToPrint            
-                trigger={() =><button class="btn btn-primary text-white mx-1">พิมพ์</button>}
-                content={() => componentRef.current}            
-              />
-
+              <button  type="button" class="btn btn-outline-primary mx-1" onClick={(e) => fn_showgraph(e)}><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;กราฟ</button>
+              <button  type="button" class="btn btn-outline-primary mx-1" onClick={(e) => fn_showgraphlab(e)}><i class="fa fa-table" aria-hidden="true"></i>&nbsp;กราฟและผลแล็บ</button>              
+              <button  type="button" class="btn btn-outline-primary mx-1" onClick={(e) => fn_showlab(e)}><i class="fa fa-file-o" aria-hidden="true"></i>&nbsp;ผลแล็บ</button>                           
             </div>      
         </div>
       </div>
@@ -413,8 +415,69 @@ return(
     <div class="row">  
        <div class="col-sm-12">
         <div class="card">
-            <div class="card-body">  
-                <h5 class="card-title">กราฟ</h5>                                 
+            <div class="card-body"> 
+                             
+            {/* <h5 class="card-title text-start">กราฟ</h5> */}
+          
+                          <div className="row justify-content-around">
+                            <div className="col-sm-2 col-item">   
+                                <div class="card-text text-start">
+                                <select  className="form-select" name=""> 
+                                           <option value='0' selected>ดัชนีมวลกาย(ฺBMI)</option>                      
+                                           <option value='1'>กราฟน้ำหนัก</option>                      
+                                           <option value='1'>กราฟส่วนสูง</option>                      
+                                           </select>
+                                </div> 
+                            </div>
+                            <div className="col-sm-6 col-item">   
+                            </div>
+                            <div className="col-sm-4 col-item">   
+                                <div class="card-text text-end">
+                                    <div class="d-flex flex-row">                                                                                                                     
+                                        <div class='p-2'>
+                                        <select className="form-select" name=""> 
+                                          <option value='0'>ประเภทข้อมูล</option>                      
+                                           <option value='1'>ข้อมูลที่บันทึกเอง</option>                      
+                                           <option value='2'>ข้อมูลจากชุดตรวจวัด</option>                      
+                                           <option value='3'>ข้อมูลจากแอพและอุปกรณ์</option>                      
+                                           <option value='4'>ข้อมูลจากสถานพยาบาล</option>                      
+                                           </select>
+                                        </div>
+
+                                        <div class='p-2'>
+                                        <DatePicker className="form-select" name=""
+                                          selected={startDate}
+                                          onChange={(date) => setStartDate(date)}
+                                          dateFormat="MM/yyyy"
+                                          showMonthYearPicker
+                                        />                                   
+                                       
+                                         
+                                        </div>
+
+                                        <div class='p-2'>
+                                          <ReactToPrint            
+                                            trigger={() =><button class="btn btn-primary text-white mx-1"><i class="fa fa-print fa-lg" aria-hidden="true"></i></button>}
+                                            content={() => componentRef.current}            
+                                          />
+                                         
+                                        </div>
+
+                                    </div>
+                                      
+
+                                      
+                                    
+                                </div>
+                            
+                            </div>
+                        
+                          </div>
+
+              
+            
+           
+                
                
                 {
                   typegraph === "1" ? 
@@ -498,8 +561,7 @@ return(
                     
                 </div> */}
 
-         
-
+        
                      
             </div>
         </div>
