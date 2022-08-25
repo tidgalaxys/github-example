@@ -64,12 +64,18 @@ const MyLineChart = forwardRef(({data}, ref) => {
                  
         <div ref={ref}>
         <br></br>
-        <div style={{ width: "95%", height: 415 }}> 
+        <div style={{ width: "100%", height: 415 }}> 
          <ResponsiveContainer >
             <LineChart
                 width={500}
                 height={300}
                 data={data}
+                margin={{
+                  top: 10,
+                  right: 87,
+                  bottom: 50,
+                  left: 90
+              }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
@@ -139,17 +145,17 @@ const MyLineChart = forwardRef(({data}, ref) => {
     return (
     <div ref={ref}>
       <br></br>
-      <div style={{ width: "95%", height: 415 }} > 
+      <div style={{ width: "100%", height: 415 }} > 
            <ResponsiveContainer>
               <ComposedChart
                   width={500}
                   height={400}
                   data={data}
                   margin={{
-                      top: 20,
-                      right: 20,
-                      bottom: 20,
-                      left: 20
+                      top: 10,
+                      right: 87,
+                      bottom: 50,
+                      left: 90
                   }}
               >
                 <CartesianGrid stroke="#f5f5f5" />
@@ -233,10 +239,19 @@ const FrmGraph = ({lcpara,fn_callbackme}) => {
      
     var el = document.querySelectorAll('#divnav');
     [].forEach.call(el, function(el) {
-      el.style.border = "0px";            
+      el.style.border = "0px";       
     });
 
-    e.target.parentNode.parentNode.style.border = "1px dashed";            
+    var el2 = document.querySelectorAll('#divnava');
+    [].forEach.call(el2, function(el2) {      
+      el2.style.color = "blue";      
+      el2.style.backgroundColor= "white";
+    });
+
+    //e.target.parentNode.parentNode.style.border = "1px dashed";            
+    e.target.parentNode.parentNode.style.border = "1px #FFFFFF";            
+    e.target.parentNode.style.color= "white";
+    e.target.parentNode.style.backgroundColor= "purple";         
     
     settypegraph(type);
 
@@ -252,7 +267,7 @@ const FrmGraph = ({lcpara,fn_callbackme}) => {
     fn_callbackme();
     const el2 = document.querySelectorAll("#div0");    
     el2[0].className = "col-sm-11 my-2"; 
-    el2[0].style.width = "96.12%";
+    el2[0].style.width = "97.2%";
     const el = document.querySelectorAll("#div1");
     el[0].classList.add("d-none");                                    
   }
@@ -261,10 +276,10 @@ const FrmGraph = ({lcpara,fn_callbackme}) => {
       e.preventDefault();                         
       const el = document.querySelectorAll("#div1");
       el[0].className = "col-sm-3 my-2";        
-      el[0].style.width = "26.12%";        
+      el[0].style.width = "23.2%";        
       const el2 = document.querySelectorAll("#div0");          
       el2[0].className = "col-sm-8 my-2";
-      el2[0].style.width = "70%"; 
+      el2[0].style.width = "74%"; 
   }
 
   const fn_showlab = (e) => {
@@ -275,7 +290,7 @@ const FrmGraph = ({lcpara,fn_callbackme}) => {
     
     const el = document.querySelectorAll("#div1");
     el[0].className = "col-sm-11 my-2";        
-    el[0].style.width = "96.12%";
+    el[0].style.width = "97.2%";
     
   }
 
@@ -295,7 +310,7 @@ return(
 
 
 <div class="row">
-  <div class="col-sm-12" style={{ width: "99%" }}>
+  <div class="col-sm-12">
     <div class="card">
       <div class="card-body">             
            <div class="text-center">
@@ -309,109 +324,47 @@ return(
 </div>
 
 
-
 <div class="row">
-
-<div class="col-sm-1 my-2" style={{ width: "2.80%"}}>    
-    <div class="row"> 
-
-      <div class="col-sm-12 my-3"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">       
-          <a href="#" onClick={(e) => fn_changetype(e,'1')} >
-            <i class="fa fa-user fa-lg" aria-hidden="true"></i></a>         
-        </div>       
-      </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#" class="text-danger" onClick={(e) => fn_changetype(e,'2')}>
-            <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
-          </a>
-        </div>                
-      </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-danger">
-            <i class="fa fa-heartbeat fa-lg" aria-hidden="true"></i>                    
-          </a>
-        </div>                
-        
-      </div>
-
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-warning">
-            <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i>
-          </a>
+<div class="col-sm-1 my-1" style={{ width: "2.8%"}}> 
+     <div class="row">
+      <div class="col-sm-12 my-1"> 
+        {/* <ul class="nav flex-column border border-light"> */}
+        <ul class="nav flex-column">
+          <li  id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" aria-current="page" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-heart" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'2')}><i class="fa fa-stethoscope" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-user-md" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-user" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-hospital-o" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-ambulance" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+          </li>
+          <li id='divnav' class="nav-item text-center">
+            <a id='divnava' class="nav-link" href="#" onClick={(e) => fn_changetype(e,'1')}><i class="fa fa-heartbeat" aria-hidden="true"></i></a>
+          </li>
           
-        </div>                
+        </ul>
       </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-center text-primary">
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-success">
-          <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
-          </a>
-        </div>                
-      </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-secondary">
-            <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>                     
-          </a>
-        </div>                
-      </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">          
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-dark">
-            <i class="fa fa-stethoscope fa-lg" aria-hidden="true"></i>
-          </a>
-        </div>                
-      </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-danger">
-            <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>          
-          </a>
-        </div>                
-      </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#" onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-dark">
-            <i class="fa fa-ambulance fa-lg" aria-hidden="true"></i>
-          </a>
-        </div>                
-      </div>
-
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-primary">
-            <i class="fa fa-hospital-o fa-lg" aria-hidden="true"></i>          
-          </a>
-        </div>                
-      </div>
-      
-      <div class="col-sm-12 my-2"> 
-        <div id='divnav' class="d-inline p-2 bg-light text-primary text-center">
-          <a href="#"  onClick={(e) => fn_changetype(e,'1')} class="pe-auto text-dark">
-            <i class="fa fa-user-md fa-lg" aria-hidden="true"></i>  
-          </a>        
-        </div>                
-      </div>
+     </div>    
+</div>
 
 
-  
-    </div>
-  </div>
-
-
-  <div class="col-sm-11 my-2" id="div0" style={{ width: "96.12%"}}>    
+  <div class="col-sm-11 my-2" id="div0" style={{ width: "97.18%"}}>    
     <div class="row">  
        <div class="col-sm-12">
         <div class="card">

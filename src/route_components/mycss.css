@@ -5,6 +5,7 @@
   }
   
   @page {
+    size: auto; margin-right: 0mm;margin-top:20mm;
     /* size: A4 portrait; */
     /* size: A4 landscape;  */
   }
