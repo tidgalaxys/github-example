@@ -416,10 +416,7 @@ return(
                                          
                                         </div>
 
-                                    </div>
-                                      
-
-                                      
+                                    </div>                                                                            
                                     
                                 </div>
                             
@@ -427,11 +424,7 @@ return(
                         
                           </div>
 
-              
-            
-           
-                
-               
+                                                                    
                 {
                   typegraph === "1" ? 
                   (

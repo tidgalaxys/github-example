@@ -192,7 +192,12 @@ const Dashboard = () => {
         ////const fieldName = e.target.getAttribute('id');
         console.log(e.target.id);
         console.log(e.target.title);
-        history.push('/FrmMainGraph');
+        //history.push('/FrmMainGraph');
+        history.push('/FrmMainGraph/3v9GeJUg8IUnfi7M6IvLJsCcdQT2');
+        
+        
+        
+        
 
         ////console.log(fieldName);
      

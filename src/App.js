@@ -80,11 +80,11 @@ const App = () => {
           </PrivateRoute>
                
  
-          <PrivateRoute path="/FrmMainGraph">
+          <PrivateRoute path="/FrmMainGraph/:id">
             <FrmMainGraph />
           </PrivateRoute>
 
-
+   
 
           <Route path="/login">
             <Login handlelogin={handlelogin} />

@@ -1,0 +1,133 @@
+
+@baseURL = https://dashboard-dev.arvic.cariva.co.th
+
+#Read value from .env file
+@firebaseApiKey = {{$dotenv FIREBASE_API_KEY}}
+@firebaseEmail = {{$dotenv FIREBASE_EMAIL}}
+@firebasePassword = {{$dotenv FIREBASE_PASSWORD}}
+@firebaseIDToken = {{firebaseLogin.response.body.$.idToken}} 
+
+@userId = bVZZg8AWOnMD5nJADOboY1CUC133
+
+####
+# For the convenience's sake, 
+# this could also get from firebase.signInEmailAndPassword Javascript SDK
+# @name firebaseLogin
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{firebaseApiKey}}
+Content-Type: application/json
+
+{
+  "email": "{{firebaseEmail}}",
+  "password":"{{firebasePassword}}",
+  "returnSecureToken": true
+}
+
+###
+
+@querystring = "?search=__search__&min_age=19&max_age=40&gender=male&page=1&page_size=10"
+
+# @name GetUsers
+GET {{baseURL}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{firebaseIDToken}}
+
+# Example response 
+# {
+#     "total": 100,
+#     "items": [{
+#        "uid": 1
+#     }, {
+#        "uid": 2
+#     }]
+# }
+
+###
+
+# @name GetUsersStat
+GET {{baseURL}}/api/users/stats
+Content-Type: application/json
+Authorization: Bearer {{firebaseIDToken}}
+
+# Example response 
+# {
+#     "total": 100,
+#     "male": 50,
+#     "female": 50
+# }
+
+### 
+
+# @name GetOwnProfile (Doctor)
+GET {{baseURL}}/api/users/me
+Content-Type: application/json
+Authorization: Bearer {{firebaseIDToken}}
+
+
+# Example response 
+# {
+#   "uid": "Q1HevexoZkQzyJO7XMhx0vlRCbq1",
+#   "title": "__TITLE__",
+#   "first_name": "__FIRST_NAME__",
+#   "last_name": "__LAST_NAME__",
+#   "nid": "1580622235874",
+#   "email": "KrissanananT@cariva.co.th",
+#   "phone": "0812345678",
+#   "hospital": "__HOSPITAL__",
+#   "created_at": "2022-06-07T05:17:58.8125Z",
+#   "updated_at": "2022-06-28T10:34:40.121654Z"
+# }
+
+###
+# @name GetUser
+
+GET {{baseURL}}/api/users/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{firebaseIDToken}}
+
+# Example response 
+# {
+#   "uid": "Q1HevexoZkQzyJO7XMhx0vlRCbq1",
+#   "omise_id": null,
+#   "telemed_id": null,
+#   "first_name": "__FIRST_NAME__",
+#   "last_name": "__LAST_NAME__",
+#   "display_name": null,
+#   "nid": "1580622235874",
+#   "phone": "0812345678",
+#   "email": "KrissanananT@cariva.co.th",
+#   "birth_date": "2000-08-30T00:00:00Z",
+#   "tnc_version": "0",
+#   "pp_version": "0",
+#   "gender": "female",
+#   "image": null,
+#   "underlying_diseases": [
+#     "diabetes",
+#     "test"
+#   ],
+#   "medical_records": [
+#     ""
+#   ],
+#   "allergy": null,
+#   "pdpa_version": "2022-11-01T00:00:00Z",
+#   "pdpa_consents": {
+#     "data_processing": true,
+#     "record_video_and_audio": false,
+#     "record_sensitive_data": true,
+#     "payment_processing": false,
+#     "news_and_information": true
+#   },
+#   "created_at": "2022-06-07T05:17:58.8125Z",
+#   "updated_at": "2022-06-28T10:34:40.121654Z"
+# }
+
+
+###
+# @name graph
+# Ex: source => phr-input, wearable, checkpoint-input, carekit
+# Ex: type => bp,sbp,dbp,pulse,pulse_series,wt,ht,bmi,water_consumption,walking_step,walking_distance,energy_burned,sleeping_start,sleeping_end,sleeping_total_minute,blood_sugar,hba1c,cholesterol,ldl,hdl,triglyceride,bun,creatinine,egfr,spo2,
+
+GET {{baseURL}}/api/observations/graph/users/3v9GeJUg8IUnfi7M6IvLJsCcdQT2?type=bmi&start_date=2022-08-01&end_date=2022-08-31&source=phr-input
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{firebaseIDToken}}
+

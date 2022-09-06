@@ -9,6 +9,7 @@ import { Link, useRouteMatch,Switch,Route } from 'react-router-dom'
 
 
 
+
 const Dashboard_Exam = () => {
   
    const {token,settoken} = useContext(AuthContext);
@@ -23,7 +24,11 @@ const Dashboard_Exam = () => {
          
     e.preventDefault();
 
-    const myurl = "/api/users"
+    //const myurl = "/api/users";
+    let myurl ="/api/users/3v9GeJUg8IUnfi7M6IvLJsCcdQT2";
+    //const myurl ="/api/observations/graph/users/3v9GeJUg8IUnfi7M6IvLJsCcdQT2?type=bmi&start_date=2022-08-01&end_date=2022-08-31&source=phr-input";
+    //let myurl ="/api/observations/graph/users/3v9GeJUg8IUnfi7M6IvLJsCcdQT2?type=spo2&start_date=2022-08-01&end_date=2022-08-31&source=phr-input";                       
+    //let myurl ="/api/observations/graph/users/3v9GeJUg8IUnfi7M6IvLJsCcdQT2?type=blood_sugar&start_date=2022-08-01&end_date=2022-08-31&source=phr-input";                       
     
     await axios.get(myurl,{        
       'withCredentials': false,        
@@ -37,7 +42,10 @@ const Dashboard_Exam = () => {
 
     }).then( (response) => {          
       let output = response.data            
-      console.log('output',output);       
+      console.log('output',output);  
+      // console.log(output.first_name);   
+      // console.log(output.last_name);   
+      // console.log(output.gender);   
       setgetoutput(output.items);
            
     }).catch(err => {
@@ -85,8 +93,8 @@ const Dashboard_Exam = () => {
 
         })
       }
+   
       
-
 
     </div>
   )

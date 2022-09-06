@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "0f2fa0b1-d7ad-4768-854e-7bf92667566e",
+		"name": "Dashboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20923535"
+	},
+	"item": [
+		{
+			"name": "observation-api",
+			"item": [
+				{
+					"name": "Get observations graph",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/api/observations/graph/users/k5M0xkk19JWIIiNmiVxXV4NaK9Z2?type=spo2&start_date=2022-08-01&end_date=2022-08-31&source=carekit",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"observations",
+								"graph",
+								"users",
+								"k5M0xkk19JWIIiNmiVxXV4NaK9Z2"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "spo2",
+									"description": "EX. bp|sbp|dbp|pulse|wt|ht|bmi|water_consumption|walking_distance|energy_burned|sleeping_start|sleeping_end|sleeping_total_minute|blood_sugar|hba1c|cholesterol|ldl|hdl|triglyceride|bun|creatinine|egfr|spo2|walking_step|pulse_series"
+								},
+								{
+									"key": "start_date",
+									"value": "2022-08-01",
+									"description": "Format : YYYY-MM-DD"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-08-31",
+									"description": "Format : YYYY-MM-DD"
+								},
+								{
+									"key": "source",
+									"value": "carekit",
+									"description": "EX. phr-input, wearable, checkpoint-input, carekit"
+								}
+							]
+						},
+						"description": "**Endpoint :** /observations/graph/users/**{user_id}**?type=**{type}**&start_date=**{start_date}**&end_date=**{end_date}**&source=**{source}**\n\n**Method :** GET\n\n**Parameter**\n\n**Field : type**\n\n*   **Ex.** bp|sbp|dbp|pulse|wt|ht|bmi|water_consumption|walking_distance|energy_burned|sleeping_start|sleeping_end|sleeping_total_minute|blood_sugar|hba1c|cholesterol|ldl|hdl|triglyceride|bun|creatinine|egfr|spo2|walking_step|pulse_series\n*   **String**\n*   **Required**\n    \n\n**Field : start_date**\n\n*   **Ex.** 2022-06-01\n*   **Date (Format : YYYY-MM-DD)**\n*   **Required**\n    \n\n**Field : end_date**\n\n*   **Ex.** 2022-06-30\n*   **Date (Format : YYYY-MM-DD)**\n*   **Required**\n    \n\n**Field : source**\n\n*   **Ex.** phr-input, wearable, carekit, checkpoint-input\n*   **String**\n*   **Required**\n    \n\n**Field : user_id**\n\n*   **Ex.** ptiX81n5V6hlrqz0F8YwMVOAuYD3\n*   **String**\n*   **Required**\n    \n\n**Response**\n\n**IF type =>** bp|sbp|dbp|pulse|wt|ht|bmi|sleeping_start|sleeping_end|blood_sugar|hba1c|cholesterol|ldl|hdl|triglyceride|bun|creatinine|egfr|spo2\n\n*   **IF value != null****JSON** -> {\"data\" : \\[{ \"datetime\" : \"2022-08-29T14:04:48Z\", \"value\":100 }\\]}\n*   **IF value == null****JSON** -> {\"data\" : \\[{ \"datetime\" : \"2022-08-30T00:00:00Z\", \"value\":null }\\]}\n    \n\n**IF type =>** walking_step|water_consumption|walking_distance|sleeping_total_minute|energy_burned\n\n**JSON** -> {\"data\" : \\[{ \"datetime\" : \"2022-06-30T00:00:00:00Z\", \"value\":100 }\\]}\n\n**IF type =>** pulse_series\n\n**JSON** -> {\"data\" : \\[{ \"datetime\" : \"2022-06-30T00:00:00:00Z\", \"value\":100 }\\]}\n\n**Description Response**\n\n**date** = วันที่\n\n**value** = จำนวนค่า\n\n**JSON** -> {\"data\" : \\[{ \"date\" : \"2022-06-30T00:00:00:00Z\", \"value\":30.0 }\\]}\n\n**Description Response**\n\n**date** = วันที่\n\n**value** = จำนวนค่า"
+					},
+					"response": []
+				},
+				{
+					"name": "Get observations stats",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/api/observations/stats/users/ptiX81n5V6hlrqz0F8YwMVOAuYD3?type=wt&start_date=2022-06-01&end_date=2022-06-30&source=phr-input",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"observations",
+								"stats",
+								"users",
+								"ptiX81n5V6hlrqz0F8YwMVOAuYD3"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "wt",
+									"description": "EX. bmi|blood_sugar|dbp|sbp|wt|ht|water_consumption|sleeping_total_minute|spo2|cholesterol|egfr|creatinine|energy_burned|walking_step|pulse_series"
+								},
+								{
+									"key": "start_date",
+									"value": "2022-06-01",
+									"description": "Format : YYYY-MM-DD"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-06-30",
+									"description": "Format : YYYY-MM-DD"
+								},
+								{
+									"key": "source",
+									"value": "phr-input",
+									"description": "EX. phr-input, wearable, checkpoint-input, carekit"
+								}
+							]
+						},
+						"description": "**Endpoint :** /observations/stats/users/**{user_id}**?type=**{type}**&start_date=**{start_date}**&end_date=**{end_date}**&source=**{source}**\n\n**Method :** GET\n\n**Parameter**\n\n**Field : type**\n\n*   **Ex.** bmi|wt\n*   **String**\n*   **Required**\n    \n\n**Field : start_date**\n\n*   **Ex.** 2022-06-01\n*   **Date (Format : YYYY-MM-DD)**\n*   **Required**\n    \n\n**Field : end_date**\n\n*   **Ex.** 2022-06-30\n*   **Date (Format : YYYY-MM-DD)**\n*   **Required**\n    \n\n**Field : source**\n\n*   **Ex.** phr-input, wearable, carekit, checkpoint-input\n*   **String**\n*   **Required**\n    \n\n**Field : user_id**\n\n*   **Ex.** ptiX81n5V6hlrqz0F8YwMVOAuYD3\n*   **String**\n*   **Required**\n    \n\n**Response**\n\n**IF type bmi**\n\n**JSON** -> { \"avg\": 23.74, \"min\": 21.36, \"max\": 26.12, \"abnormal\": 1}\n\n**IF type wt**\n\n**JSON** -> { \"avg\": 23.74, \"min\": 21.36, \"max\": 26.12,}\n\n**Description Response**\n\n**avg** = ค่าเฉลี่ย\n\n**min** = ค่าต่ำสุด\n\n**max** = ค่ามากสุด\n\n**abnormal** = จำนวนครั้งอยู่ในเกณฑ์ไม่ปกติ"
+					},
+					"response": []
+				},
+				{
+					"name": "Get observations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/api/observations/users/g8pnx1fxiwbeAmsJUl1XG4oeXUs2?type=bmi&start_date=2022-06-01&end_date=2022-08-31&source=phr-input&page=1",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"observations",
+								"users",
+								"g8pnx1fxiwbeAmsJUl1XG4oeXUs2"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "bmi"
+								},
+								{
+									"key": "start_date",
+									"value": "2022-06-01",
+									"description": "Format : YYYY-MM-DD"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-08-31",
+									"description": "Format : YYYY-MM-DD"
+								},
+								{
+									"key": "source",
+									"value": "phr-input",
+									"description": "EX. phr-input, wearable, checkpoint-input, carekit"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Ex. 1"
+								},
+								{
+									"key": "page_size",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "**Endpoint :** /observations/users/**{userId}**?type=**{type}**&start_date=**{start_data}**&end_date=**{end_date}**&source=**{source}**&page=**{page}**\n\n**Method :** GET\n\n**Parameter**\n\n**Field : type**\n\n*   **Ex.** bmi|wt\n*   **String**\n*   **Required**\n    \n\n**Field : start_date**\n\n*   **Ex.** 2022-06-01\n*   **Date (Format : YYYY-MM-DD)**\n*   **Required**\n    \n\n**Field : end_date**\n\n*   **Ex.** 2022-06-30\n*   **Date (Format : YYYY-MM-DD)**\n*   **Required**\n    \n\n**Field : source**\n\n*   **Ex.** phr-input, wearable, carekit, checkpoint-input\n*   **String**\n*   **Required**\n    \n\n**Field : user_id**\n\n*   **Ex.** ptiX81n5V6hlrqz0F8YwMVOAuYD3\n*   **String**\n*   **Required**\n    \n\n**Field : page**\n\n*   **Ex.** 1\n*   **String**\n*   **Required**\n    \n\n**Field : page_size**\n\n*   **Ex.** 10\n*   **String**\n    \n\n**Response**\n\n**IF type bmi**\n\n**JSON** ->{ \"date\":\"2022-06-01T00:00:00Z\", \"source\":\"phr-input\", \"data\":{ \"bmi\":23, \"wt\":70, \"ht\":173, \"status\":\"น้อยกว่าเกณฑ์\" }}\n\n**IF type wt**\n\n**JSON** ->{ \"date\":\"2022-06-01T00:00:00Z\", \"source\":\"phr-input\", \"data\":{\"wt\":70}}\n\n**Description Response**\n\n**issuedAt** = วันที่\n\n**source** = ประเภทข้อมูล\n\n**data** : bmi = ค่า bmi, weight = น้ำหนัก, height = ส่วนสูง, status = สถานะ"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "firebase",
+			"item": [
+				{
+					"name": "Login by email/password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{firebase-email}}\",\n    \"password\": \"{{firebase-password}}\",\n    \"returnToken\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{firebase-api-key}}",
+							"protocol": "https",
+							"host": [
+								"identitytoolkit",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"accounts:signInWithPassword"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{firebase-api-key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-api",
+			"item": [
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/users?search=__search__&min_age=19&max_age=40&gender=male&page=1&page_size=10",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "__search__"
+								},
+								{
+									"key": "min_age",
+									"value": "19"
+								},
+								{
+									"key": "max_age",
+									"value": "40"
+								},
+								{
+									"key": "gender",
+									"value": "male"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/users/{{user-id}}",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/users/stats",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://arvic-beta.medensy.com",
+			"type": "string"
+		}
+	]
+}
